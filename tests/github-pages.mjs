@@ -40,9 +40,17 @@ try {
     }
   });
 
-  for (const path of ['', 'about/', 'services/digital-product-passport/', 'experience/dpp-product-journey/']) {
+  for (const [path, expectedHeading] of [
+    ['', null],
+    ['about/', 'Ideas into action. Together.'],
+    ['services/digital-product-passport/', 'Make product data work harder.'],
+    ['experience/dpp-product-journey/', null]
+  ]) {
     await page.goto(`https://pages-preview.invalid${base}${path}`, { waitUntil: 'networkidle' });
     if (!(await page.locator('#root').innerText()).trim()) throw new Error(`Empty page at ${path || '/'}`);
+    if (expectedHeading && !(await page.getByRole('heading', { name: expectedHeading }).count())) {
+      throw new Error(`Expected route did not render at ${path}; got ${await page.locator('h1').allInnerTexts()} at ${new URL(page.url()).pathname}`);
+    }
     const logo = page.locator('header .logo-image');
     if (await logo.count() && !(await logo.evaluate(image => image.complete && image.naturalWidth > 0))) {
       throw new Error(`Logo asset did not load at ${path || '/'}`);

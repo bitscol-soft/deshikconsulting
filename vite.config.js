@@ -14,7 +14,7 @@ function githubPagesPaths() {
     name: 'github-pages-paths',
     enforce: 'pre',
     transform(code, id) {
-      if (!githubPages || !id.startsWith(`${process.cwd()}/src/`) || !/\.[jt]sx?$/.test(id)) return null;
+      if (!githubPages || id.endsWith('/src/paths.js') || !id.startsWith(`${process.cwd()}/src/`) || !/\.[jt]sx?$/.test(id)) return null;
       const ast = parse(code, { sourceType: 'module', plugins: ['jsx'] });
       let changed = false;
       traverse(ast, {
@@ -22,6 +22,14 @@ function githubPagesPaths() {
           const { node, parent } = path;
           if (!node.value.startsWith('/') || node.value.startsWith('//')) return;
           if (parent.type === 'ObjectProperty' && parent.key === node && !parent.computed) return;
+          if (node.value === '/') {
+            const isLinkProperty = parent.type === 'ObjectProperty'
+              && parent.value === node
+              && ['href', 'link', 'path', 'src', 'url'].includes(parent.key.name || parent.key.value);
+            const isJsxLink = parent.type === 'JSXAttribute'
+              && ['href', 'src'].includes(parent.name.name);
+            if (!isLinkProperty && !isJsxLink) return;
+          }
           node.value = `${githubPagesBase.slice(0, -1)}${node.value}`;
           changed = true;
         }
