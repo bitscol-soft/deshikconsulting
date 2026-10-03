@@ -1,11 +1,1 @@
-Deshik Consulting frontend (React + Vite)
-
-Run locally:
-  npm install
-  npm run dev
-
-Build for deployment:
-  npm run build
-
-The dist/ folder in this archive is a prebuilt static site. Deploy its contents to a static host, with fallback to index.html for client-side routes.
-Backend/CMS and live form submission are not included in this frontend package.
+Run npm install && npm run dev. Leadership positioning and example outputs are illustrative mockups, not verified personal histories or client outcomes. New About pages remain noindex. Consultant form opens an email draft, not a server submission.
