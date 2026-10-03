@@ -7,6 +7,7 @@ import json
 import re
 import time
 import requests
+import sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 phrases = json.loads((ROOT / 'translation-source.json').read_text())
@@ -31,8 +32,9 @@ def translate_one(lang, chunk):
             if attempt==3: print('FAILED',lang,str(e)[:100],flush=True);return {}
             time.sleep(1+attempt)
 
-out={lang:json.loads((ROOT/'src'/'draft-locales'/f'{lang}.json').read_text()) for lang in ('bn','fr','de','es','ar')}
-with concurrent.futures.ThreadPoolExecutor(max_workers=7) as pool:
+targets=sys.argv[1:] or ['bn','fr','de','es','ar','hi','ur','id']
+out={lang:json.loads((ROOT/'src'/'draft-locales'/f'{lang}.json').read_text()) if (ROOT/'src'/'draft-locales'/f'{lang}.json').exists() else {} for lang in targets}
+with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
     futures={pool.submit(translate_one,lang,chunk):lang for lang in out for chunk in chunks if any(s not in out[lang] for s in chunk)}
     for i,f in enumerate(concurrent.futures.as_completed(futures),1):
         lang=futures[f];out[lang].update(f.result() or {})

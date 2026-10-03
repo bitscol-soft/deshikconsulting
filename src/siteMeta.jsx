@@ -21,6 +21,7 @@ const specialTitles = {
   '/resources/': 'Resource Center | Deshik Consulting',
   '/resources/dpp-data-map/': 'Product-data Source Map | Deshik Consulting',
   '/resources/automation-pilot-canvas/': 'Automation Pilot Canvas | Deshik Consulting',
+  '/services/trusted-data-gateway/': 'Trusted Data Gateway Provider | Deshik Consulting',
   '/services/data-artificial-intelligence/': 'Data & Artificial Intelligence | Deshik Consulting',
   '/services/renewable-energy-ev/': 'Renewable Energy & EV | Deshik Consulting',
   '/services/semiconductor-microelectronics/': 'Semiconductor & Microelectronics | Deshik Consulting',
@@ -59,6 +60,7 @@ const descriptions = {
   '/services/digital-product-passport/': 'Explore Digital Product Passport consulting: product information, supplier data, traceability and readiness questions.',
   '/services/digital-product-passport/rmg-bangladesh/': 'An exporter-focused approach to product-data readiness for Bangladesh garments and textiles. Explore the questions, information owners and possible pilot path.',
   '/services/industrial-automation/': 'Explore industrial automation consulting, from factory visibility and operating questions to a measurable pilot.',
+  '/services/trusted-data-gateway/': 'Explore Deshik’s developing Trusted Data Gateway provider offering: a proposed product-data integration pathway connecting PLM, ERP, MES, SCM and QMS toward governed product records and DPP preparation.',
   '/services/data-artificial-intelligence/': 'Explore the decisions, data foundations and governance questions behind practical AI opportunities.',
   '/services/renewable-energy-ev/': 'Explore renewable energy and electric mobility opportunities through a practical consulting lens.',
   '/services/semiconductor-microelectronics/': 'Explore semiconductor and microelectronics opportunities, partnerships and capability questions.',
@@ -86,7 +88,7 @@ const descriptions = {
   '/insights/factory-signal-story/': 'A fictional composite story illustrating how factory signals can become more useful operating decisions. Not a client case study.',
   '/contact/': 'Start a conversation with Deshik Consulting about product data, operations, technology or strategy.',
 };
-const blockedPaths = new Set(['/about/consultants/','/about/work-as-consultant/','/about/who-we-are/','/about/leadership/','/about/leadership/belal-ahmed/','/about/leadership/nizam-farid-ahmed/','/about/leadership/nahid-mustafa/','/about/leadership/alamgir-kabir-roni/','/about/mission/','/about/vision/','/about/partners-affiliations/','/about/careers-culture/','/experience/factory-operations-studio/','/experience/dpp-product-journey/','/insights/rmg-product-story/', '/insights/factory-signal-story/', '/work/demo-product-data-pilot/', '/work/demo-factory-visibility/']);
+const blockedPaths = new Set(['/services/trusted-data-gateway/','/about/consultants/','/about/work-as-consultant/','/about/who-we-are/','/about/leadership/','/about/leadership/belal-ahmed/','/about/leadership/nizam-farid-ahmed/','/about/leadership/nahid-mustafa/','/about/leadership/alamgir-kabir-roni/','/about/mission/','/about/vision/','/about/partners-affiliations/','/about/careers-culture/','/experience/factory-operations-studio/','/experience/dpp-product-journey/','/insights/rmg-product-story/', '/insights/factory-signal-story/', '/work/demo-product-data-pilot/', '/work/demo-factory-visibility/']);
 const fallback = 'Explore practical consulting perspectives on product data, industrial systems and business transformation from Deshik Consulting.';
 function updateMeta(selector, attribute, value) {
   let tag = document.head.querySelector(selector);

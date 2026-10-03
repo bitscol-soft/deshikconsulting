@@ -1,0 +1,38 @@
+[
+  {
+    "eyebrow": "TRUSTED DATA GATEWAY PROVIDER / TDG",
+    "line1": "Pinagkakatiwalaang data.",
+    "accent": "Praktikal",
+    "tail": "pag-unlad.",
+    "description": "Binubuo ni Deshik ang tungkulin nito bilang isang Trusted Data Gateway provider—nagkokonekta ng produkto, materyal, produksyon at data ng ebidensya sa mga umiiral nang system para sa pagiging handa ng DPP.",
+    "primary": "I-explore ang TDG",
+    "secondary": "Talakayin ang iyong data"
+  },
+  {
+    "eyebrow": "ISTRATEGY MEETS execution",
+    "line1": "bukas,",
+    "accent": "ginawa",
+    "tail": "praktikal.",
+    "description": "Tinutulungan namin ang mga ambisyosong negosyo na mag-navigate sa intersection ng product intelligence, industrial innovation at strategic growth.",
+    "primary": "Galugarin ang aming kadalubhasaan",
+    "secondary": "Magsimula ng pag-uusap"
+  },
+  {
+    "eyebrow": "PASSPORT NG DIGITAL PRODUCT",
+    "line1": "Bawat produkto",
+    "accent": "may a",
+    "tail": "kwento.",
+    "description": "Bigyang-kahulugan ang impormasyon ng produkto, data ng supplier at ang mga desisyon na humuhubog sa mga pandaigdigang value chain ng bukas.",
+    "primary": "Galugarin ang pagkonsulta sa DPP",
+    "secondary": "Kahandaan ng DPP"
+  },
+  {
+    "eyebrow": "INDUSTRIAL AUTOMATION",
+    "line1": "Mas",
+    "accent": "magkakaugnay na",
+    "tail": "operasyon.",
+    "description": "Pagsama-samahin ang mga kagamitan, mga signal ng pagpapatakbo, at pananaw ng tao upang makahanap ng mas praktikal na mga paraan sa pasulong.",
+    "primary": "I-explore ang automation",
+    "secondary": "Suriin ang isang pagkakataon"
+  }
+]
