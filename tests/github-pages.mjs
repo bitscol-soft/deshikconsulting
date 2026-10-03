@@ -44,12 +44,16 @@ try {
     ['', null],
     ['about/', 'Ideas into action. Together.'],
     ['services/digital-product-passport/', 'Make product data work harder.'],
+    ['services/trusted-data-gateway/', 'Trusted Data Gateway Provider.'],
     ['experience/dpp-product-journey/', null]
   ]) {
     await page.goto(`https://pages-preview.invalid${base}${path}`, { waitUntil: 'networkidle' });
     if (!(await page.locator('#root').innerText()).trim()) throw new Error(`Empty page at ${path || '/'}`);
-    if (expectedHeading && !(await page.getByRole('heading', { name: expectedHeading }).count())) {
-      throw new Error(`Expected route did not render at ${path}; got ${await page.locator('h1').allInnerTexts()} at ${new URL(page.url()).pathname}`);
+    if (expectedHeading) {
+      const heading = (await page.locator('h1').allInnerTexts()).join(' ').replace(/\s+/g, ' ').trim();
+      if (!heading.includes(expectedHeading)) {
+        throw new Error(`Expected route did not render at ${path}; got "${heading}"`);
+      }
     }
     const logo = page.locator('header .logo-image');
     if (await logo.count() && !(await logo.evaluate(image => image.complete && image.naturalWidth > 0))) {

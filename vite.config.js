@@ -22,6 +22,10 @@ function githubPagesPaths() {
           const { node, parent } = path;
           if (!node.value.startsWith('/') || node.value.startsWith('//')) return;
           if (parent.type === 'ObjectProperty' && parent.key === node && !parent.computed) return;
+          if (parent.type === 'BinaryExpression' && ['==', '===', '!=', '!=='].includes(parent.operator)) return;
+          if (parent.type === 'CallExpression'
+            && parent.arguments.includes(node)
+            && ['endsWith', 'includes', 'startsWith'].includes(parent.callee.property?.name)) return;
           if (node.value === '/') {
             const isLinkProperty = parent.type === 'ObjectProperty'
               && parent.value === node
