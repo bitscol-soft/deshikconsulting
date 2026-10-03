@@ -47,7 +47,8 @@ try {
     ['services/trusted-data-gateway/', 'Trusted Data Gateway Provider.'],
     ['experience/dpp-product-journey/', null]
   ]) {
-    await page.goto(`https://pages-preview.invalid${base}${path}`, { waitUntil: 'networkidle' });
+    const response = await page.goto(`https://pages-preview.invalid${base}${path}`, { waitUntil: 'networkidle' });
+    if (response.status() !== 200) throw new Error(`Route returned HTTP ${response.status()}: ${path || '/'}`);
     if (!(await page.locator('#root').innerText()).trim()) throw new Error(`Empty page at ${path || '/'}`);
     if (expectedHeading) {
       const heading = (await page.locator('h1').allInnerTexts()).join(' ').replace(/\s+/g, ' ').trim();

@@ -35,8 +35,8 @@ jobs:
         env:
           GITHUB_PAGES: 'true'
           GITHUB_PAGES_BASE: /${{ github.event.repository.name }}/
-      - name: Enable client-side route fallback
-        run: cp dist/index.html dist/404.html
+      - name: Prepare GitHub Pages routes
+        run: node scripts/prepare-github-pages.mjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site artifact
