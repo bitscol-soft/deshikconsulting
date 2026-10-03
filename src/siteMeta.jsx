@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLanguage } from './i18n.jsx';
+import { getRoutePathname } from './paths.js';
 
 const specialTitles = {
   '/about/consultants/': 'Our Consultants | Deshik Consulting',
@@ -95,7 +96,8 @@ function updateMeta(selector, attribute, value) {
 export function useSiteMeta() {
   const language = useLanguage();
   useEffect(() => {
-    const path = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
+    const route = getRoutePathname();
+    const path = route.endsWith('/') ? route : route + '/';
     const description = descriptions[path] || fallback;
     if (specialTitles[path]) document.title = specialTitles[path];
     const production = ['deshikconsulting.com', 'www.deshikconsulting.com'].includes(location.hostname);
